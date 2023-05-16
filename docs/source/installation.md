@@ -4,7 +4,7 @@
 
 Install the pre-compiled version from PyPI:
 
-```
+```bash
 pip install streq
 ```
 
@@ -12,6 +12,6 @@ pip install streq
 
 Clone the repository, then `cd` into it. Then run:
 
-```
+```bash
 pip install -e .
 ```
