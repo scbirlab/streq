@@ -139,7 +139,7 @@ def ratcliff_obershelp(x: str,
     1
     >>> ratcliff_obershelp('AAAG', 'TCGA')
     2
-
+    
     """
     
 	sm = SequenceMatcher(a=x, b=y, 
