@@ -5,8 +5,9 @@ calculations on nucleotide sequences.
 
 """
 
+from __future__ import annotations
+
 from collections.abc import Generator, Sequence
-from difflib import SequenceMatcher
 import re
 
 from .utils import (sequences, 
