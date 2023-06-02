@@ -1,5 +1,9 @@
 # 🧬 streq
 
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/scbirlab/streq/python-publish.yml)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/streq)
+![PyPI](https://img.shields.io/pypi/v/streq)
+
 Python utilities for working with nucleotide sequence strings.
 
 ## Installation
@@ -83,6 +87,17 @@ Get autocorrelation (rough indicator for secondary structure).
 1.3047619047619046
 >>> sq.correlation('AAACTTT')
 1.9238095238095236
+```
+
+Wobble base-pairing can be taken into account.
+
+```python
+>>> correlation('GGGTTT')
+0.0
+>>> correlation('GGGTTT', wobble=True)
+2.3
+>>> correlation('GGGUUU', wobble=True)
+2.3
 ```
 
 Provide a second sequence to get correlation between sequences.

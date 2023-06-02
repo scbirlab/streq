@@ -1,5 +1,7 @@
 """Miscellaneous utilities used in streq."""
 
+from __future__ import annotations
+
 from collections import namedtuple
 from collections.abc import Callable, Sequence
 from functools import wraps

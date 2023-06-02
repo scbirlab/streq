@@ -63,6 +63,17 @@ Get autocorrelation (rough indicator for secondary structure).
 1.9238095238095236
 ```
 
+Wobble base-pairing can be taken into account.
+
+```python
+>>> correlation('GGGTTT')
+0.0
+>>> correlation('GGGTTT', wobble=True)
+2.3
+>>> correlation('GGGUUU', wobble=True)
+2.3
+```
+
 Provide a second sequence to get correlation between sequences.
 
 ```python
