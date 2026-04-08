@@ -1,8 +1,9 @@
 [project]
 name = "streq"
-version = "0.0.2"
+version = "0.0.3"
 authors = [
   { name="Eachan Johnson", email="eachan.johnson@crick.ac.uk" },
+  { name="Susannah Parkhill", email="susannah.parkhill@crick.ac.uk" },
 ]
 description = "Basic utilities for working with nucleotide sequence strings."
 readme = "README.md"
@@ -28,7 +29,8 @@ classifiers = [
 ]
 
 dependencies = [ 
-  "pyyaml"
+  "pyyaml",
+  "regex",
 ]
 
 [project.urls]

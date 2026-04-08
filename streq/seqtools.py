@@ -9,6 +9,7 @@ from __future__ import annotations
 
 from collections.abc import Generator, Sequence
 import re
+import regex
 
 from .utils import (sequences, 
                     _preserve_case, 
@@ -140,7 +141,8 @@ def to_dna(x: str) -> str:
 
 @_normalize_case(nargs=2)
 def find_iupac(query: str, 
-               sequence: str) -> Generator[Sequence[int], str]:
+               sequence: str,
+               overlapped: bool = False,) -> Generator[Sequence[int], str]:
     
     """Find occurrences of a query in a larger sequence.
 
@@ -188,9 +190,9 @@ def find_iupac(query: str,
     """
     
     query = query.translate(seqs.base2regex)
-    query = re.compile(query) 
+    query = regex.compile(query) 
     
-    for match in query.finditer(sequence):
+    for match in regex.finditer(query, sequence, overlapped=overlapped):
 
         yield match.span(), match.group()
 

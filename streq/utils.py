@@ -22,8 +22,10 @@ sequence_dict = dict(
     re_sites = _sequences['type_iis_re'],
     DNA = _sequences['alphabet']['DNA'],
     RNA = _sequences['alphabet']['RNA'],
+    AA = _sequences['alphabet']['AA'],
+    AAx = _sequences['alphabet']['AAx'],
     base2regex = str.maketrans(_sequences['base2regexp']),
-    PAMs = _sequences['PAMs']
+    PAMs = _sequences['PAMs'],
 )
 
 SequenceCollection = namedtuple('SequenceCollection',
