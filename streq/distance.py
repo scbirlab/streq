@@ -200,7 +200,7 @@ def correlation(x: str,
     >>> correlation('AAATTT')
     2.3
     >>> round(correlation('AAATTCT'), 2)
-    1.30
+    1.3
     >>> round(correlation('AAACTTT'), 2)
     1.92
     >>> correlation('AAA', 'TTT')
