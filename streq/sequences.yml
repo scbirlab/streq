@@ -1,6 +1,8 @@
 alphabet:
   DNA: ATCG
   RNA: AUCG
+  AA: ARNDCEQGHILKMFPSTWYV
+  AAx: ARNDCEQGHILKMFPSTWYVUO
 
 type_iis_re:
   BbsI: GAAGAC
