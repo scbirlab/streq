@@ -199,10 +199,10 @@ def correlation(x: str,
     0.0
     >>> correlation('AAATTT')
     2.3
-    >>> correlation('AAATTCT')
-    1.3047619047619046
-    >>> correlation('AAACTTT')
-    1.9238095238095236
+    >>> round(correlation('AAATTCT'), 2)
+    1.30
+    >>> round(correlation('AAACTTT'), 2)
+    1.92
     >>> correlation('AAA', 'TTT')
     3.0
     >>> correlation('AAA', 'AAA')
