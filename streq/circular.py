@@ -29,7 +29,6 @@ class Circular(str):
     """
 
     def __getitem__(self, __key: slice) -> str:
-
         """Slice circularly.
         
         Parameters
@@ -43,16 +42,27 @@ class Circular(str):
             Slice from Circular object. Ordinary string.
         
         """
-
         if isinstance(__key, int):
-
             return super().__getitem__(__key)
-        
         elif isinstance(__key, slice):
-
             start = __key.start or 0
             stop = (len(self) if __key.stop is None 
                     else __key.stop) 
-
             return (super().__getitem__(slice(start, None)) + self)[:(stop - start)][::__key.step]
+
+    def find(self, query, start: int = 0):
+        """Find a query in a circular string.
+
+        Examples
+        ========
+        >>> s = Circular("AATTTTA")
+        >>> s.find("AAA")
+        6
+        >>> s.find("AAAA")
+        -1
+
+        """
+        ref = self.__str__()
+        ref += self.__str__()[:len(query) - 1]
+        return ref.find(query, start)
         

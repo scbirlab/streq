@@ -140,9 +140,12 @@ def to_dna(x: str) -> str:
 
 
 @_normalize_case(nargs=2)
-def find_iupac(query: str, 
-               sequence: str,
-               overlapped: bool = False,) -> Generator[Sequence[int], str]:
+def find_iupac(
+    query: str, 
+    sequence: str,
+    overlapped: bool = False,
+    circular: str = False
+) -> Generator[Sequence[int], str]:
     
     """Find occurrences of a query in a larger sequence.
 
@@ -186,14 +189,28 @@ def find_iupac(query: str,
     Found ARY at 3:6: AGC
     Found ARY at 6:9: AGT
     Found ARY at 12:15: AAC
+    >>> for (start_idx, end_idx), match in find_iupac('AAA', 'AAAAT', overlapped=True):
+    ...     print(f"Found AAA at {start_idx}:{end_idx}: {match}")
+    ... 
+    Found AAA at 0:3: AAA
+    Found AAA at 1:4: AAA
+    >>> for (start_idx, end_idx), match in find_iupac('AAA', 'AAAAT', overlapped=False):
+    ...     print(f"Found AAA at {start_idx}:{end_idx}: {match}")
+    ... 
+    Found AAA at 0:3: AAA
+    >>> for (start_idx, end_idx), match in find_iupac('AAA', 'AATTTA', circular=True):
+    ...     print(f"Found AAA at {start_idx}:{end_idx}: {match}")
+    ... 
+    Found AAA at 5:8: AAA
 
     """
     
+    if circular:
+        sequence += sequence[:len(query)-1]
     query = query.translate(seqs.base2regex)
     query = regex.compile(query) 
     
     for match in regex.finditer(query, sequence, overlapped=overlapped):
-
         yield match.span(), match.group()
 
 
